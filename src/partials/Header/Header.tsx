@@ -6,9 +6,9 @@ const Header = () => {
     <header>
       <h1>Todo App</h1>
       <nav>
-        <Headerlink text="Home" />
-        <Headerlink text="Status" />
-        <Headerlink text="About" />
+        <Headerlink text="Home" url="#" />
+        <Headerlink text="Status" url="#" />
+        <Headerlink text="About" url="#" />
       </nav>
     </header>
   );

@@ -1,5 +1,10 @@
-const Headerlink = ({ text }: any) => {
-  return <a href="#">{text}</a>;
+type HeaderlinkProps = {
+  url: string;
+  text: string;
+};
+
+const Headerlink = ({ text, url }: HeaderlinkProps) => {
+  return <a href={url}>{text}</a>;
 };
 
 export default Headerlink;
