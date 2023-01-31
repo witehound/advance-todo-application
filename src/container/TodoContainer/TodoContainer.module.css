@@ -1,20 +1,19 @@
 .todocontainerwarp {
   display: flex;
   width: 100%;
-  justify-content: center;
-  gap: 10px;
+  gap: 15px;
   height: auto;
+  flex-direction: column;
+  align-items: center;
 }
 
 .todocontainer {
   display: flex;
   width: 500px;
-  height: 50px;
   background-color: white;
   justify-content: space-evenly;
-  padding: 5px;
+  padding: 10px;
   align-items: center;
-  padding: 20px;
 }
 
 .todoisdone {

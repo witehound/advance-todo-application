@@ -3,15 +3,15 @@ import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Checkbox } from "../../../components";
 
-const TodoItem = () => {
+type TodoItemProps = {
+  todo: string;
+};
+
+const TodoItem = ({ todo }: TodoItemProps) => {
   return (
     <div className={styles.todocontainer}>
-      <Checkbox
-        type="checkbox"
-        name="todoItem"
-        placeHolder="Input your to ddo item"
-      />
-      <div className={styles.title}>Task to do</div>
+      <Checkbox name="todoItem" placeHolder="Input your to ddo item" />
+      <div className={styles.title}>{todo}</div>
       <div className={styles.button}>
         <Button>
           <FontAwesomeIcon icon={faPencil} />

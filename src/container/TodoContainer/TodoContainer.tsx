@@ -4,7 +4,9 @@ import TodoItem from "./TodoItem/TodoItem";
 const TodoContainer = () => {
   return (
     <div className={styles.todocontainerwarp}>
-      <TodoItem />
+      <TodoItem todo={"hello world"} />
+      <TodoItem todo={"hello world"} />
+      <TodoItem todo={"hello world"} />
     </div>
   );
 };

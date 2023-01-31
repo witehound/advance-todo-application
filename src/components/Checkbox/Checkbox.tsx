@@ -1,16 +1,20 @@
 import styles from "./Checkbox.module.css";
 
 type InputsProps = {
-  type: string;
   placeHolder: string;
   name: string;
   value?: any;
 };
 
-const Inputs = ({ type, placeHolder, name }: InputsProps) => {
+const Inputs = ({ placeHolder, name }: InputsProps) => {
   return (
     <div>
-      <input type={type} placeholder={placeHolder} name={name} />
+      <input
+        type="checkbox"
+        placeholder={placeHolder}
+        name={name}
+        className={styles.checkbox}
+      />
     </div>
   );
 };
