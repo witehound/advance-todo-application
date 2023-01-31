@@ -13,12 +13,12 @@ const TodoItem = ({ todo }: TodoItemProps) => {
       <Checkbox name="todoItem" placeHolder="Input your to ddo item" />
       <div className={styles.title}>{todo}</div>
       <div className={styles.button}>
-        <Button>
+        <Button style="transparent" onClick={() => {}}>
           <FontAwesomeIcon icon={faPencil} />
         </Button>
       </div>
       <div>
-        <Button>
+        <Button style="transparent" onClick={() => {}}>
           <FontAwesomeIcon icon={faTrash} />
         </Button>
       </div>
