@@ -1,23 +1,26 @@
 import styles from "../TodoContainer.module.css";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Inputs } from "../../../components";
 
 const TodoItem = () => {
   return (
     <div className={styles.todocontainer}>
-      <div>
-        <input type="checkbox" name="" id="" />
-      </div>
+      <Inputs
+        type="checkbox"
+        name="todoItem"
+        placeHolder="Input your to ddo item"
+      />
       <div className={styles.title}>Task to do</div>
       <div className={styles.button}>
-        <button>
+        <Button>
           <FontAwesomeIcon icon={faPencil} />
-        </button>
+        </Button>
       </div>
       <div>
-        <button>
+        <Button>
           <FontAwesomeIcon icon={faTrash} />
-        </button>
+        </Button>
       </div>
     </div>
   );
