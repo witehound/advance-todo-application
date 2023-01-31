@@ -5,3 +5,24 @@ button {
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.primary {
+  background-color: var(--PRIMARY_COLOR);
+  color: var(--INVERSE_TEXT_COLOR);
+}
+
+.secondary {
+  background-color: var(--SECONDARY_COLOR);
+  color: var(--INVERSE_TEXT_COLOR);
+}
+
+.disabled {
+  background-color: var(--BG_COLOR);
+  color: var(--TEXT_COLOR);
+  opacity: 0.5;
+}
+
+.transparent {
+  background-color: transparent;
+  color: var(--TEXT_COLOR);
+}

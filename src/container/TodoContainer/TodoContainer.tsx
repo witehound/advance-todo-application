@@ -12,7 +12,7 @@ const TodoContainer = () => {
     <div className={styles.todocontainerwarp}>
       <form className={styles.form}>
         <Textfield placeHolder="" name="" />
-        <Button>Add</Button>
+        <Button style="primary">Add</Button>
       </form>
       {tempTodo.map((todo) => (
         <TodoItem key={todo} todo={todo} />
