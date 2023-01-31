@@ -12,7 +12,3 @@ nav {
   display: flex;
   gap: 20px;
 }
-
-nav > a {
-  color: white;
-}
