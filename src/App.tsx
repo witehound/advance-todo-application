@@ -1,5 +1,5 @@
 import {} from "react";
-import { Header } from "./components";
+import { Header } from "./partials";
 
 import "./App.css";
 
@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <Header />
+      <div>hey</div>
     </>
   );
 }
