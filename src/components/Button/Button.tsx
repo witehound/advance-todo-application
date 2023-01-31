@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 type ButtonProp = {
   children: ReactNode;
   style: string;
-  onClick: () => void;
+  onClick: (e: any) => void;
 };
 
 const Button = ({ children, style, onClick }: ButtonProp) => {
@@ -27,7 +27,11 @@ const Button = ({ children, style, onClick }: ButtonProp) => {
   }, []);
 
   return (
-    <button onClick={onClick} className={`${styles.button} ${st}`}>
+    <button
+      onClick={(e) => onClick(e)}
+      className={`${styles.button} ${st}`}
+      type="button"
+    >
       {children}
     </button>
   );
