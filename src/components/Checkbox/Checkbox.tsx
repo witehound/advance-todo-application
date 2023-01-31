@@ -1,4 +1,4 @@
-import "./Inputs.module.css";
+import styles from "./Checkbox.module.css";
 
 type InputsProps = {
   type: string;

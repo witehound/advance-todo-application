@@ -1,7 +1,7 @@
 import Button from "./Button/Button";
-import Inputs from "./Inputs/Inputs";
+import Checkbox from "./Checkbox/Checkbox";
 
 export {
     Button,
-    Inputs
+    Checkbox
 }
