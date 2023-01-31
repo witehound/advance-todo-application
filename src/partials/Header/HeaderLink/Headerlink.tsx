@@ -1,5 +1,5 @@
 type HeaderlinkProps = {
-  url: string;
+  url?: string;
   text: string;
 };
 

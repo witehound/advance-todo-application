@@ -1,7 +1,7 @@
 import {} from "react";
 import { Header } from "./partials";
 
-import "./App.css";
+import "./styles/App.css";
 
 function App() {
   return (
