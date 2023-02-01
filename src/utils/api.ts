@@ -10,7 +10,16 @@ export const getAllTodo = async () => {
 
 export const adddTodo = async (body : any) => {
     try {
-        const { data } = await  axios.post(`${url}todos`, body)
+        const response = await axios.post(`${url}todos`, body)
+        return response
+    } catch (error) {
+        
+    }
+}
+
+export const deleteTodo = async ( id : Number) => {
+    try {
+        const { data } = await  axios.delete(`${url}todos/${id}`)
         return data
     } catch (error) {
         

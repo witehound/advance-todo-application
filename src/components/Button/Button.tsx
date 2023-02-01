@@ -5,9 +5,15 @@ type ButtonProp = {
   children: ReactNode;
   style: string;
   type?: "button" | "submit";
+  handleOnClick?: () => void;
 };
 
-const Button = ({ children, style, type = "button" }: ButtonProp) => {
+const Button = ({
+  children,
+  style,
+  type = "button",
+  handleOnClick,
+}: ButtonProp) => {
   const [st, setSt] = useState<string>("");
 
   const allStyles = {
@@ -27,7 +33,11 @@ const Button = ({ children, style, type = "button" }: ButtonProp) => {
   }, []);
 
   return (
-    <button className={`${styles.button} ${st}`} type={type}>
+    <button
+      className={`${styles.button} ${st}`}
+      type={type}
+      onClick={handleOnClick}
+    >
       {children}
     </button>
   );

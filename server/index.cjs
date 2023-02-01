@@ -57,13 +57,12 @@ app.patch("/todos/:id", (req, res) => {
   res.json(updatedItem);
 });
 
-app.delete("/todos", (req, res) => {
-  const itemId = req.body.id;
-  const itemIndex = todosDB.findIndex((todo) => todo.id === itemId);
+app.delete("/todos/:id", (req, res) => {
+  const itemId = req.params.id;
+  const itemIndex = todosDB.findIndex((todo) => todo.id == itemId);
   todosDB.splice(itemIndex, 1);
-  res.json({ id: req.body.id });
+  res.json({ id: req.params.id });
 });
-
 app.listen(3001, () => {
   console.log("Server Started!");
 });
