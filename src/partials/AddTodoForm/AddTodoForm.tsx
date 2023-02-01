@@ -1,22 +1,27 @@
 import styles from "./AddTodoForm.module.css";
 import { Button, Textfield } from "../../components";
-import { FormEventHandler, useState, useRef, useEffect } from "react";
+import { FormEventHandler, useState } from "react";
 import { useAutoFocus } from "../../hooks";
+import { adddTodo } from "../../utils";
 
 type AddTodoFormProps = {
   seTodo: any;
+  loadTodos: () => void;
 };
 
-const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
+const AddTodoForm = ({ seTodo, loadTodos }: AddTodoFormProps) => {
   const onInput = (task: string) => {
     setTask(task);
   };
 
   const [task, setTask] = useState<string>("");
 
-  const onAddClicked: FormEventHandler<HTMLFormElement> = (e: any) => {
+  const onAddClicked: FormEventHandler<HTMLFormElement> = async (e: any) => {
     e.preventDefault();
-    seTodo((prev: string[]) => [...prev, task]);
+    await adddTodo({
+      todo: task,
+    });
+    loadTodos();
     setTask("");
   };
 

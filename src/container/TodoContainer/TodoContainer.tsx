@@ -19,7 +19,7 @@ const TodoContainer = () => {
 
   return (
     <div className={styles.todocontainerwarp}>
-      <AddTodoForm seTodo={setTodo} />
+      <AddTodoForm seTodo={setTodo} loadTodos={loadTodos} />
       {tempTodo.map((todo, i) => (
         <TodoItem key={i} todo={todo} />
       ))}

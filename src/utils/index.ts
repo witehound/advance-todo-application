@@ -1,5 +1,6 @@
-import { getAllTodo } from "./api";
+import { getAllTodo, adddTodo } from "./api";
 
 export {
-    getAllTodo
+    getAllTodo,
+    adddTodo
 }
