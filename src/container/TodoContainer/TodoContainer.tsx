@@ -1,14 +1,21 @@
 import { AddTodoForm } from "../../partials";
+import { getAllTodo } from "../../utils";
 import styles from "./TodoContainer.module.css";
 import TodoItem from "./TodoItem/TodoItem";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Todo } from "../../models/todo";
 
 const TodoContainer = () => {
-  const [tempTodo, setTodo] = useState<string[]>([
-    "hey today is monday do something",
-    "hey today is tueesday do something",
-    "hey today is wednesday do something",
-  ]);
+  const [tempTodo, setTodo] = useState<Todo[]>([]);
+
+  const loadTodos = async () => {
+    const list = await getAllTodo();
+    setTodo(list);
+  };
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
 
   return (
     <div className={styles.todocontainerwarp}>

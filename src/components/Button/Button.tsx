@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 type ButtonProp = {
   children: ReactNode;
   style: string;
-  type: "button" | "submit";
+  type?: "button" | "submit";
 };
 
 const Button = ({ children, style, type = "button" }: ButtonProp) => {
