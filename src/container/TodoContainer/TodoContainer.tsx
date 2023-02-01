@@ -5,10 +5,12 @@ import TodoItem from "./TodoItem/TodoItem";
 import { useState, useEffect } from "react";
 import { Todo } from "../../models/todo";
 
-const TodoContainer = () => {
-  const [tempTodo, setTodo] = useState<Todo[]>([]);
+type TodoContainerProps = {
+  todoService: todoServices;
+};
 
-  const todoService = new todoServices();
+const TodoContainer = ({ todoService }: TodoContainerProps) => {
+  const [tempTodo, setTodo] = useState<Todo[]>([]);
 
   const loadTodos = async () => {
     const list = await todoService.getAllTodo();

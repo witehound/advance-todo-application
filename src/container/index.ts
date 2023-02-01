@@ -1,4 +1,4 @@
-import TodoContainer from "./TodoContainer/TodoContainer";
+import TodoContainer from "./TodoContainer";
 
 export {
     TodoContainer
