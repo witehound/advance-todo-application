@@ -1,13 +1,23 @@
 import styles from "./AddTodoForm.module.css";
 import { Button, Textfield } from "../../components";
+import { useState } from "react";
 
 type AddTodoFormProps = {
-  task: string;
-  onInput: (e: any) => void;
-  onAddClicked: (e: any) => void;
+  seTodo: any;
 };
 
-const AddTodoForm = ({ task, onInput, onAddClicked }: AddTodoFormProps) => {
+const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
+  const onInput = (task: string) => {
+    setTask(task);
+  };
+
+  const [task, setTask] = useState<string>("");
+
+  const onAddClicked = () => {
+    seTodo((prev: string[]) => [...prev, task]);
+    setTask("");
+  };
+
   return (
     <form className={styles.form}>
       <Textfield
@@ -16,7 +26,7 @@ const AddTodoForm = ({ task, onInput, onAddClicked }: AddTodoFormProps) => {
         onInput={(e) => onInput(e)}
         value={task}
       />
-      <Button style="primary" onClick={(e) => onAddClicked(e)}>
+      <Button style="primary" onClick={onAddClicked}>
         Add
       </Button>
     </form>

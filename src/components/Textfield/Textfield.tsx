@@ -3,7 +3,7 @@ import styles from "./Textfield.module.css";
 type TextfieldProps = {
   placeHolder: string;
   name: string;
-  onInput: (e: any) => void;
+  onInput: (task: string) => void;
   value?: string;
 };
 
@@ -15,7 +15,7 @@ const Textfield = ({ placeHolder, name, onInput, value }: TextfieldProps) => {
         placeholder={placeHolder}
         name={name}
         className={styles.input}
-        onChange={(e: any) => onInput(e)}
+        onChange={(e: any) => onInput(e.target.value)}
         value={value}
       />
     </div>
