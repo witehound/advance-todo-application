@@ -19,7 +19,7 @@ const TodoItem = ({ todo, loadTodos, todoService }: TodoItemProps) => {
 
   return (
     <div className={styles.todocontainer}>
-      <Checkbox name="todoItem" placeHolder="Input your to ddo item" />
+      <Checkbox name="todoItem" />
       <div className={styles.title}>{todo.task}</div>
       <div className={styles.button}>
         <Button style="transparent">

@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import styles from "./Textfield.module.css";
 
 type TextfieldProps = {
-  placeHolder: string;
+  placeHolder?: string;
   name: string;
   onInput: (task: string) => void;
   value?: string;
