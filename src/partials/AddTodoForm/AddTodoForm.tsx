@@ -13,20 +13,21 @@ const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
 
   const [task, setTask] = useState<string>("");
 
-  const onAddClicked = () => {
+  const onAddClicked = (e: any) => {
+    e.preventDefault();
     seTodo((prev: string[]) => [...prev, task]);
     setTask("");
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={(e) => onAddClicked(e)}>
       <Textfield
         placeHolder=""
         name=""
         onInput={(e) => onInput(e)}
         value={task}
       />
-      <Button style="primary" onClick={onAddClicked}>
+      <Button type="submit" style="primary">
         Add
       </Button>
     </form>

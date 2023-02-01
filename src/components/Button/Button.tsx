@@ -4,10 +4,10 @@ import styles from "./Button.module.css";
 type ButtonProp = {
   children: ReactNode;
   style: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  type: "button" | "submit";
 };
 
-const Button = ({ children, style, onClick }: ButtonProp) => {
+const Button = ({ children, style, type = "button" }: ButtonProp) => {
   const [st, setSt] = useState<string>("");
 
   const allStyles = {
@@ -27,11 +27,7 @@ const Button = ({ children, style, onClick }: ButtonProp) => {
   }, []);
 
   return (
-    <button
-      onClick={onClick}
-      className={`${styles.button} ${st}`}
-      type="button"
-    >
+    <button className={`${styles.button} ${st}`} type={type}>
       {children}
     </button>
   );
