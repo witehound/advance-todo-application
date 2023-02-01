@@ -6,12 +6,14 @@ type TextfieldProps = {
   name: string;
   onInput: (task: string) => void;
   value?: string;
+  label?: string;
 };
 
 const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
-  ({ placeHolder, name, onInput, value }, ref) => {
+  ({ placeHolder, name, onInput, value, label }, ref) => {
     return (
       <div className={styles.inputcontainer}>
+        {label ? <label htmlFor={name}>{label}</label> : null}
         <input
           ref={ref}
           type="text"

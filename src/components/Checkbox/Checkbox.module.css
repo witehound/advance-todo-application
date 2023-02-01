@@ -3,3 +3,9 @@
   height: 15px;
   width: 15px;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

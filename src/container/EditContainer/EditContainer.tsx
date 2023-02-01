@@ -6,8 +6,8 @@ const EditContainer = () => {
     <div className={styles.edit}>
       <h2>Edit Todo</h2>
       <div>
-        <Textfield name="name" value="" onInput={() => {}} />
-        <Checkbox name="" />
+        <Textfield name="task" value="" onInput={() => {}} label="Task" />
+        <Checkbox name="" label="Is Done?" />
         <TextAreaFeild value="" />
         <canvas />
       </div>
