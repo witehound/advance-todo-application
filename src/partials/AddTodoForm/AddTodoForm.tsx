@@ -1,6 +1,7 @@
 import styles from "./AddTodoForm.module.css";
 import { Button, Textfield } from "../../components";
 import { FormEventHandler, useState, useRef, useEffect } from "react";
+import { useAutoFocus } from "../../hooks";
 
 type AddTodoFormProps = {
   seTodo: any;
@@ -19,11 +20,7 @@ const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
     setTask("");
   };
 
-  const inPutRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    inPutRef.current?.focus();
-  }, []);
+  const inPutRef = useAutoFocus();
 
   return (
     <form className={styles.form} onSubmit={(e) => onAddClicked(e)}>
