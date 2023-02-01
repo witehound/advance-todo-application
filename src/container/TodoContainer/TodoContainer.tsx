@@ -25,7 +25,12 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
     <div className={styles.todocontainerwarp}>
       <AddTodoForm seTodo={setTodo} loadTodos={loadTodos} />
       {tempTodo.map((todo, i) => (
-        <TodoItem key={i} todo={todo} loadTodos={loadTodos} />
+        <TodoItem
+          key={i}
+          todo={todo}
+          loadTodos={loadTodos}
+          todoService={todoService}
+        />
       ))}
     </div>
   );

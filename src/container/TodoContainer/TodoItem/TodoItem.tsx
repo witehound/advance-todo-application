@@ -8,10 +8,10 @@ import { todoServices } from "../../../service";
 type TodoItemProps = {
   todo: Todo;
   loadTodos: () => void;
+  todoService: todoServices;
 };
 
-const TodoItem = ({ todo, loadTodos }: TodoItemProps) => {
-  const todoService = new todoServices();
+const TodoItem = ({ todo, loadTodos, todoService }: TodoItemProps) => {
   const handleDeleteTodo = async () => {
     await todoService.deleteTodo(todo.id);
     loadTodos();
