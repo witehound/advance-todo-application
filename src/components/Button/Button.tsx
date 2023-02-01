@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import styles from "./Button.module.css";
 
 type ButtonProp = {

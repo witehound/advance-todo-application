@@ -1,6 +1,6 @@
 import styles from "./AddTodoForm.module.css";
 import { Button, Textfield } from "../../components";
-import { useState } from "react";
+import { FormEventHandler, useState, useRef, useEffect } from "react";
 
 type AddTodoFormProps = {
   seTodo: any;
@@ -13,11 +13,17 @@ const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
 
   const [task, setTask] = useState<string>("");
 
-  const onAddClicked = (e: any) => {
+  const onAddClicked: FormEventHandler<HTMLFormElement> = (e: any) => {
     e.preventDefault();
     seTodo((prev: string[]) => [...prev, task]);
     setTask("");
   };
+
+  const inPutRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inPutRef.current?.focus();
+  }, []);
 
   return (
     <form className={styles.form} onSubmit={(e) => onAddClicked(e)}>
@@ -26,6 +32,7 @@ const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
         name=""
         onInput={(e) => onInput(e)}
         value={task}
+        ref={inPutRef}
       />
       <Button type="submit" style="primary">
         Add
