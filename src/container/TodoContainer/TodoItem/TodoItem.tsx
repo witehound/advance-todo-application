@@ -9,12 +9,22 @@ type TodoItemProps = {
   todo: Todo;
   loadTodos: () => void;
   todoService: todoServices;
+  setSelectedTask: (id: number) => void;
 };
 
-const TodoItem = ({ todo, loadTodos, todoService }: TodoItemProps) => {
+const TodoItem = ({
+  todo,
+  loadTodos,
+  todoService,
+  setSelectedTask,
+}: TodoItemProps) => {
   const handleDeleteTodo = async () => {
     await todoService.deleteTodo(todo.id);
     loadTodos();
+  };
+
+  const handleEditTodo = (id: number) => {
+    setSelectedTask(id);
   };
 
   return (
@@ -22,7 +32,12 @@ const TodoItem = ({ todo, loadTodos, todoService }: TodoItemProps) => {
       <Checkbox name="todoItem" />
       <div className={styles.title}>{todo.task}</div>
       <div className={styles.button}>
-        <Button style="transparent">
+        <Button
+          style="transparent"
+          handleOnClick={() => {
+            handleEditTodo(todo.id);
+          }}
+        >
           <FontAwesomeIcon icon={faPencil} />
         </Button>
       </div>

@@ -4,6 +4,7 @@ import styles from "./TodoContainer.module.css";
 import TodoItem from "./TodoItem/TodoItem";
 import { useState, useEffect } from "react";
 import { Todo } from "../../models/todo";
+import { EditContainer } from "../../container";
 
 type TodoContainerProps = {
   todoService: todoServices;
@@ -11,6 +12,7 @@ type TodoContainerProps = {
 
 const TodoContainer = ({ todoService }: TodoContainerProps) => {
   const [tempTodo, setTodo] = useState<Todo[]>([]);
+  const [selectedTask, setSelectedTask] = useState<number>(-1);
 
   const loadTodos = async () => {
     const list = await todoService.getAllTodo();
@@ -30,8 +32,10 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
           todo={todo}
           loadTodos={loadTodos}
           todoService={todoService}
+          setSelectedTask={setSelectedTask}
         />
       ))}
+      {selectedTask !== -1 ? <EditContainer /> : null}
     </div>
   );
 };
