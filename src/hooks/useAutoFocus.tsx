@@ -1,11 +1,11 @@
 import { useRef, useEffect } from "react";
 
 export const useAutoFocus = () => {
-  const inPutRef = useRef<HTMLInputElement>(null);
+  const elemntRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inPutRef.current?.focus();
-  }, []);
+    elemntRef.current?.focus();
+  }, [elemntRef]);
 
-  return inPutRef;
+  return elemntRef;
 };

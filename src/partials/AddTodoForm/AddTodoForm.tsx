@@ -20,7 +20,7 @@ const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
     setTask("");
   };
 
-  const inPutRef = useAutoFocus();
+  const elemntRef = useAutoFocus();
 
   return (
     <form className={styles.form} onSubmit={(e) => onAddClicked(e)}>
@@ -29,7 +29,7 @@ const AddTodoForm = ({ seTodo }: AddTodoFormProps) => {
         name=""
         onInput={(e) => onInput(e)}
         value={task}
-        ref={inPutRef}
+        ref={elemntRef}
       />
       <Button type="submit" style="primary">
         Add
