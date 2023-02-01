@@ -1,5 +1,5 @@
 import { AddTodoForm } from "../../partials";
-import { getAllTodo } from "../../utils";
+import { todoServices } from "../../service";
 import styles from "./TodoContainer.module.css";
 import TodoItem from "./TodoItem/TodoItem";
 import { useState, useEffect } from "react";
@@ -8,8 +8,10 @@ import { Todo } from "../../models/todo";
 const TodoContainer = () => {
   const [tempTodo, setTodo] = useState<Todo[]>([]);
 
+  const todoService = new todoServices();
+
   const loadTodos = async () => {
-    const list = await getAllTodo();
+    const list = await todoService.getAllTodo();
     setTodo(list);
   };
 

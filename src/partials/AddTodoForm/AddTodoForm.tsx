@@ -2,7 +2,7 @@ import styles from "./AddTodoForm.module.css";
 import { Button, Textfield } from "../../components";
 import { FormEventHandler, useState } from "react";
 import { useAutoFocus } from "../../hooks";
-import { adddTodo } from "../../utils";
+import { todoServices } from "../../service";
 
 type AddTodoFormProps = {
   seTodo: any;
@@ -10,6 +10,7 @@ type AddTodoFormProps = {
 };
 
 const AddTodoForm = ({ seTodo, loadTodos }: AddTodoFormProps) => {
+  const todoService = new todoServices();
   const onInput = (task: string) => {
     setTask(task);
   };
@@ -18,7 +19,7 @@ const AddTodoForm = ({ seTodo, loadTodos }: AddTodoFormProps) => {
 
   const onAddClicked: FormEventHandler<HTMLFormElement> = async (e: any) => {
     e.preventDefault();
-    await adddTodo({
+    await todoService.adddTodo({
       todo: task,
     });
     loadTodos();

@@ -3,7 +3,7 @@ import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Checkbox } from "../../../components";
 import { Todo } from "../../../models/todo";
-import { deleteTodo } from "../../../utils";
+import { todoServices } from "../../../service";
 
 type TodoItemProps = {
   todo: Todo;
@@ -11,8 +11,9 @@ type TodoItemProps = {
 };
 
 const TodoItem = ({ todo, loadTodos }: TodoItemProps) => {
+  const todoService = new todoServices();
   const handleDeleteTodo = async () => {
-    await deleteTodo(todo.id);
+    await todoService.deleteTodo(todo.id);
     loadTodos();
   };
 
