@@ -5,6 +5,7 @@ import TodoItem from "./TodoItem/TodoItem";
 import { useState, useEffect } from "react";
 import { Todo } from "../../models/todo";
 import { EditContainer } from "../index";
+import { ButtonSelect } from "../../components";
 
 type TodoContainerProps = {
   todoService: todoServices;
@@ -13,6 +14,7 @@ type TodoContainerProps = {
 const TodoContainer = ({ todoService }: TodoContainerProps) => {
   const [tempTodo, setTodo] = useState<Todo[]>([]);
   const [selectedTask, setSelectedTask] = useState<number>(-1);
+  const [todoStateFilter, setTodoStateFilter] = useState<string>("all");
 
   const loadTodos = async () => {
     const list = await todoService.getAllTodo();
@@ -38,9 +40,24 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
     loadTodos();
   };
 
+  const onSeleectTodoStateFilter = (value: string) => {
+    setTodoStateFilter(value);
+  };
+
+  const selectOptions = [
+    { label: "All", value: "all" },
+    { label: "Done", value: "true" },
+    { label: "Not Done", value: "false" },
+  ];
+
   return (
     <div className={styles.todocontainerwarp}>
       <AddTodoForm loadTodos={loadTodos} todoService={todoService} />
+      <ButtonSelect
+        value={""}
+        options={selectOptions}
+        onInput={onSeleectTodoStateFilter}
+      />
       {tempTodo.map((todo, i) => (
         <TodoItem
           key={i}
