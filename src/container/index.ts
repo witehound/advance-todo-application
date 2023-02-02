@@ -1,5 +1,5 @@
 import TodoContainer from "./TodoContainer/TodoContainer";
-import EditContainer from "./EditContainer/EditContainer";
+import EditContainer from "./EditContainer";
 
 export {
     TodoContainer,

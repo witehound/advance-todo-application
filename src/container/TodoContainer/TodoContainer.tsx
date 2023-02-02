@@ -4,7 +4,7 @@ import styles from "./TodoContainer.module.css";
 import TodoItem from "./TodoItem/TodoItem";
 import { useState, useEffect } from "react";
 import { Todo } from "../../models/todo";
-import { EditContainer } from "../../container";
+import { EditContainer } from "../index";
 
 type TodoContainerProps = {
   todoService: todoServices;
@@ -23,9 +23,13 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
     loadTodos();
   }, []);
 
+  const closeEditContainer = () => {
+    setSelectedTask(-1);
+  };
+
   return (
     <div className={styles.todocontainerwarp}>
-      <AddTodoForm seTodo={setTodo} loadTodos={loadTodos} />
+      <AddTodoForm loadTodos={loadTodos} todoService={todoService} />
       {tempTodo.map((todo, i) => (
         <TodoItem
           key={i}
@@ -35,7 +39,13 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
           setSelectedTask={setSelectedTask}
         />
       ))}
-      {selectedTask !== -1 ? <EditContainer /> : null}
+      {selectedTask !== -1 ? (
+        <EditContainer
+          selectedTask={selectedTask}
+          onSaveClick={() => {}}
+          onCloseClick={closeEditContainer}
+        />
+      ) : null}
     </div>
   );
 };

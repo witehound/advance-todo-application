@@ -5,12 +5,11 @@ import { useAutoFocus } from "../../hooks";
 import { todoServices } from "../../service";
 
 type AddTodoFormProps = {
-  seTodo: any;
   loadTodos: () => void;
+  todoService: todoServices;
 };
 
-const AddTodoForm = ({ seTodo, loadTodos }: AddTodoFormProps) => {
-  const todoService = new todoServices();
+const AddTodoForm = ({ loadTodos, todoService }: AddTodoFormProps) => {
   const onInput = (task: string) => {
     setTask(task);
   };

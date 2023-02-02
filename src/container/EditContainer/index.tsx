@@ -1,6 +1,6 @@
-import { ComponentProps, ElementType } from "react";
-import { TodoContainer } from "../container";
-import { dependencyContainer, dependencies } from "../dependencies";
+import { ElementType, ComponentProps } from "react";
+import EditContainer from "./EditContainer";
+import { dependencyContainer, dependencies } from "../../dependencies";
 
 export const WithDpendency = (Component: ElementType, dependencies: any) => {
   const resolveDependencies = {} as any;
@@ -16,6 +16,6 @@ export const WithDpendency = (Component: ElementType, dependencies: any) => {
   );
 };
 
-export default WithDpendency(TodoContainer, {
+export default WithDpendency(EditContainer, {
   todoService: dependencies.todoService,
 });

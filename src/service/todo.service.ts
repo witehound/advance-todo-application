@@ -9,6 +9,12 @@ export class todoServices {
     return data;
   };
 
+  getSingleTodo = async (id : number) => {
+    const { data } = await axios.get(`${url}todos/${id}`);
+    return data;
+  }
+
+
   adddTodo = async (body: any) => {
     try {
       const response = await axios.post(`${url}todos`, body);
