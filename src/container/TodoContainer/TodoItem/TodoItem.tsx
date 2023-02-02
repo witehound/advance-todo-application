@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Checkbox } from "../../../components";
 import { Todo } from "../../../models/todo";
 import { todoServices } from "../../../service";
-import { useContext } from "react";
-import { TodoContext } from "../../../App";
+import useTodoState from "../../../hooks/useTodoState";
 
 type TodoItemProps = {
   todo: Todo;
@@ -20,14 +19,14 @@ const TodoItem = ({
   todoService,
   onDonClicked,
 }: TodoItemProps) => {
-  const { setTodoState, todoState } = useContext(TodoContext);
+  const { setTodoState, todoState } = useTodoState();
   const handleDeleteTodo = async () => {
     await todoService.deleteTodo(todo.id);
     loadTodos();
   };
 
   const handleEditTodo = (id: number) => {
-    setTodoState({ editTodo: id });
+    setTodoState({ editTodo: id, opnSideBar: true });
   };
 
   return (

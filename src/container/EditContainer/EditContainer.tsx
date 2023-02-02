@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Textfield,
   TextAreaFeild,
@@ -8,7 +8,7 @@ import {
 } from "../../components";
 import styles from "./EditContainer.module.css";
 import { todoServices } from "../../service";
-import { TodoContext } from "../../App";
+import useTodoState from "../../hooks/useTodoState";
 
 type EditContainerProps = {
   todoService: todoServices;
@@ -22,7 +22,7 @@ type EditTodoState = {
 };
 
 const EditContainer = ({ todoService }: EditContainerProps) => {
-  const { todoState, setTodoState } = useContext(TodoContext);
+  const { todoState, setTodoState } = useTodoState();
   const [todo, setTodo] = useState<EditTodoState>({
     description: "",
     handNotes: "",
@@ -31,7 +31,7 @@ const EditContainer = ({ todoService }: EditContainerProps) => {
   });
 
   const onClickCancelButton = () => {
-    setTodoState({ editTodo: -1 });
+    setTodoState({ editTodo: -1, opnSideBar: false });
   };
 
   const onClickSaveButton = async () => {

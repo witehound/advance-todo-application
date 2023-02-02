@@ -2,18 +2,17 @@ import { AddTodoForm } from "../../partials";
 import { todoServices } from "../../service";
 import styles from "./TodoContainer.module.css";
 import TodoItem from "./TodoItem/TodoItem";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Todo } from "../../models/todo";
-import { EditContainer } from "../index";
 import { ButtonSelect } from "../../components";
-import { TodoContext } from "../../App";
+import useTodoState from "../../hooks/useTodoState";
 
 type TodoContainerProps = {
   todoService: todoServices;
 };
 
 const TodoContainer = ({ todoService }: TodoContainerProps) => {
-  const { todoState } = useContext(TodoContext);
+  const { todoState } = useTodoState();
   const [tempTodo, setTodo] = useState<Todo[]>([]);
   const [todoStateFilter, setTodoStateFilter] = useState<string>("all");
 

@@ -1,16 +1,16 @@
-import { ComponentProps, ElementType, useContext } from "react";
+import { ComponentProps, ElementType } from "react";
 import styles from "./WithSideBar.module.css";
-import { TodoContext } from "../../App";
+import useTodoState from "../../hooks/useTodoState";
 
 const WithSideBar =
   (Component: ElementType) => (props: ComponentProps<typeof Component>) => {
-    const { todoState } = useContext(TodoContext);
-    if (todoState.editTodo === -1) return null;
-    return (
+    const { todoState } = useTodoState();
+
+    return todoState.opnSideBar ? (
       <div className={styles.edit}>
         <Component {...props} />
       </div>
-    );
+    ) : null;
   };
 
 export default WithSideBar;
