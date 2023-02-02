@@ -26,6 +26,10 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
   const closeEditContainer = () => {
     setSelectedTask(-1);
   };
+  const onSaveClick = () => {
+    closeEditContainer();
+    loadTodos();
+  };
 
   return (
     <div className={styles.todocontainerwarp}>
@@ -42,7 +46,7 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
       {selectedTask !== -1 ? (
         <EditContainer
           selectedTask={selectedTask}
-          onSaveClick={() => {}}
+          onSaveClick={onSaveClick}
           onCloseClick={closeEditContainer}
         />
       ) : null}

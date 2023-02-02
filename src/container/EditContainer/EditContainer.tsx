@@ -35,7 +35,8 @@ const EditContainer = ({
     task: "",
     isDone: false,
   });
-  const onClickSaveButton = () => {
+  const onClickSaveButton = async () => {
+    await todoService.updateTodo(selectedTask, todo);
     onSaveClick();
   };
 
@@ -51,6 +52,9 @@ const EditContainer = ({
   useEffect(() => {
     getTask();
   }, [selectedTask]);
+
+  console.log(todo);
+
   return (
     <div className={styles.edit}>
       <h2>Edit Todo</h2>
@@ -58,12 +62,18 @@ const EditContainer = ({
         <Textfield
           name="task"
           value={todo.task}
-          onInput={() => {}}
+          onInput={(value) => {
+            setTodo((prev) => ({ ...prev, task: value }));
+          }}
           label="Task"
         />
-        <Checkbox name="" label="Is Done?" value={todo.isDone} />
-        <TextAreaFeild value={todo.description} />
-        <CanvasFeild value={todo.handNotes} />
+        <Checkbox name="isDone" label="Is Done?" value={todo.isDone} />
+        <TextAreaFeild value={todo.description} name="description" />
+        <CanvasFeild
+          value={todo.handNotes}
+          label="Hand Notes"
+          name="handNotes"
+        />
       </div>
       <div className={styles.buttons}>
         <Button style="primary" handleOnClick={onClickSaveButton}>
