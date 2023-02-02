@@ -8,7 +8,7 @@ import {
 } from "../../components";
 import styles from "./EditContainer.module.css";
 import { todoServices } from "../../service";
-import useTodoState from "../../hooks/useTodoState";
+import { useTodoState } from "../../hooks/useTodoState";
 
 type EditContainerProps = {
   todoService: todoServices;

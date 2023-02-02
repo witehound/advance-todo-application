@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Checkbox } from "../../../components";
 import { Todo } from "../../../models/todo";
 import { todoServices } from "../../../service";
-import useTodoState from "../../../hooks/useTodoState";
+import { useTodoState } from "../../../hooks/useTodoState";
 
 type TodoItemProps = {
   todo: Todo;

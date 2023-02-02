@@ -1,4 +1,11 @@
-import { Dispatch, SetStateAction, createContext, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 type TodoStateType = {
   todoState: {
     editTodo: number;
@@ -9,25 +16,25 @@ type TodoStateType = {
   >;
 };
 
-const useTodoState = () => {
-  const TodoContext = createContext<TodoStateType>({
-    todoState: {
-      editTodo: -1,
-      opnSideBar: false,
-    },
-    setTodoState: () => {},
-  });
+const TodoContext = createContext<TodoStateType>({
+  todoState: {
+    editTodo: -1,
+    opnSideBar: false,
+  },
+  setTodoState: () => {},
+});
 
+export const TodoContextProvider = ({ children }: { children: ReactNode }) => {
   const [todoState, setTodoState] = useState({
     editTodo: -1,
     opnSideBar: false,
   });
 
-  return {
-    todoState,
-    setTodoState,
-    TodoContext,
-  };
+  return (
+    <TodoContext.Provider value={{ todoState, setTodoState }}>
+      {children}
+    </TodoContext.Provider>
+  );
 };
 
-export default useTodoState;
+export const useTodoState = () => useContext(TodoContext);

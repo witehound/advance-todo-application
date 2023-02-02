@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem/TodoItem";
 import { useState, useEffect } from "react";
 import { Todo } from "../../models/todo";
 import { ButtonSelect } from "../../components";
-import useTodoState from "../../hooks/useTodoState";
+import { useTodoState } from "../../hooks/useTodoState";
 
 type TodoContainerProps = {
   todoService: todoServices;

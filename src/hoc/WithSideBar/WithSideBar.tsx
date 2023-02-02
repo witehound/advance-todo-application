@@ -1,6 +1,6 @@
 import { ComponentProps, ElementType } from "react";
 import styles from "./WithSideBar.module.css";
-import useTodoState from "../../hooks/useTodoState";
+import { useTodoState } from "../../hooks/useTodoState";
 
 const WithSideBar =
   (Component: ElementType) => (props: ComponentProps<typeof Component>) => {
