@@ -2,9 +2,9 @@ import styles from "./Checkbox.module.css";
 
 type CheckBoxProps = {
   name: string;
-  value?: boolean;
+  value: boolean;
   label?: string;
-  onInput: (value: boolean) => void;
+  onInput?: (value: boolean) => void;
 };
 
 const CheckBox = ({ name, label, value, onInput }: CheckBoxProps) => {
@@ -16,7 +16,7 @@ const CheckBox = ({ name, label, value, onInput }: CheckBoxProps) => {
         name={name}
         className={styles.checkbox}
         checked={value}
-        onChange={(event) => onInput(event.target.checked)}
+        onChange={(event) => onInput && onInput(event.target.checked)}
       />
     </div>
   );

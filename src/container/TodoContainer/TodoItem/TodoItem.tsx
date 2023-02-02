@@ -10,6 +10,7 @@ type TodoItemProps = {
   loadTodos: () => void;
   todoService: todoServices;
   setSelectedTask: (id: number) => void;
+  onDonClicked: (id: number, isDone: boolean) => void;
 };
 
 const TodoItem = ({
@@ -17,6 +18,7 @@ const TodoItem = ({
   loadTodos,
   todoService,
   setSelectedTask,
+  onDonClicked,
 }: TodoItemProps) => {
   const handleDeleteTodo = async () => {
     await todoService.deleteTodo(todo.id);
@@ -29,7 +31,11 @@ const TodoItem = ({
 
   return (
     <div className={styles.todocontainer}>
-      <Checkbox name="todoItem" />
+      <Checkbox
+        name="todoItem"
+        value={todo.isDone}
+        onInput={(value) => onDonClicked(todo.id, value)}
+      />
       <div className={styles.title}>{todo.task}</div>
       <div className={styles.button}>
         <Button

@@ -31,6 +31,13 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
     loadTodos();
   };
 
+  const onDonClicked = async (id: number, isDone: boolean) => {
+    await todoService.updateTodo(id, {
+      isDone,
+    });
+    loadTodos();
+  };
+
   return (
     <div className={styles.todocontainerwarp}>
       <AddTodoForm loadTodos={loadTodos} todoService={todoService} />
@@ -40,6 +47,7 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
           todo={todo}
           loadTodos={loadTodos}
           todoService={todoService}
+          onDonClicked={onDonClicked}
           setSelectedTask={setSelectedTask}
         />
       ))}
