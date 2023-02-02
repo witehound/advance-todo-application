@@ -11,13 +11,14 @@ type ButtonSelectProps = {
   onInput: (value: string) => void;
 };
 const ButtonSelect = ({ value, options, onInput }: ButtonSelectProps) => {
+  console.log(typeof value);
   return (
     <div className={styles.div}>
       {options.map((option, i) => (
         <Button
           handleOnClick={() => onInput(option.value)}
-          style="primary"
           key={i}
+          style={`primary ${value == option.value && styles.selected}`}
         >
           {option.label}
         </Button>

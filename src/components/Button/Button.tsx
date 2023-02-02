@@ -25,7 +25,7 @@ const Button = ({
 
   const matchStyle = (style: string) => {
     const [match] = Object.entries(allStyles).filter(([k, v]) => k === style);
-    setSt(match[1]);
+    setSt(match && match[1]);
   };
 
   useEffect(() => {

@@ -40,8 +40,9 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
     loadTodos();
   };
 
-  const onSeleectTodoStateFilter = (value: string) => {
+  const onSeleectTodoStateFilter = async (value: string) => {
     setTodoStateFilter(value);
+    setTodo(await todoService.getAllTodo(value));
   };
 
   const selectOptions = [
@@ -54,7 +55,7 @@ const TodoContainer = ({ todoService }: TodoContainerProps) => {
     <div className={styles.todocontainerwarp}>
       <AddTodoForm loadTodos={loadTodos} todoService={todoService} />
       <ButtonSelect
-        value={""}
+        value={todoStateFilter}
         options={selectOptions}
         onInput={onSeleectTodoStateFilter}
       />

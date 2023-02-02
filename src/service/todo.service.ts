@@ -5,8 +5,8 @@ import axios from "axios";
 import { Todo } from "../models/todo";
 
 export class todoServices {
-  getAllTodo = async () => {
-    const { data } = await axios.get(`${url}todos`);
+  getAllTodo = async ( query ?: string) => {
+    const { data } = await axios.get(`${url}todos?${query && `isDone=${query}`}`, {});
     return data;
   };
 
