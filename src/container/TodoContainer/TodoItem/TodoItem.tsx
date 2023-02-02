@@ -36,7 +36,9 @@ const TodoItem = ({
         value={todo.isDone}
         onInput={(value) => onDonClicked(todo.id, value)}
       />
-      <div className={styles.title}>{todo.task}</div>
+      <div className={`${styles.title} ${todo.isDone && styles.isDone}`}>
+        {todo.task}
+      </div>
       <div className={styles.button}>
         <Button
           style="transparent"
