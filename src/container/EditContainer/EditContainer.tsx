@@ -56,8 +56,6 @@ const EditContainer = ({
     getTask();
   }, [selectedTask]);
 
-  console.log(todo);
-
   return (
     <div className={styles.edit}>
       <h2>Edit Todo</h2>
@@ -83,6 +81,7 @@ const EditContainer = ({
           value={todo.handNotes}
           label="Hand Notes"
           name="handNotes"
+          onInput={(value) => onFormChnaged("handNotes", value)}
         />
       </div>
       <div className={styles.buttons}>
