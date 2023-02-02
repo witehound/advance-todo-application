@@ -1,5 +1,5 @@
-import Button from "../Button/Button";
-import styles from "./ButtonSelect.module.css";
+import styles from "../Button/Button.module.css";
+import stylesTwo from "./ButtonSelect.module.css";
 
 type ButtonSelectOption = {
   label: string;
@@ -13,15 +13,17 @@ type ButtonSelectProps = {
 const ButtonSelect = ({ value, options, onInput }: ButtonSelectProps) => {
   console.log(typeof value);
   return (
-    <div className={styles.div}>
+    <div className={stylesTwo.div}>
       {options.map((option, i) => (
-        <Button
-          handleOnClick={() => onInput(option.value)}
+        <button
+          onClick={() => onInput(option.value)}
+          className={`${
+            value === option.value ? styles.primary : styles.secondary
+          }`}
           key={i}
-          style={`primary ${value == option.value && styles.selected}`}
         >
           {option.label}
-        </Button>
+        </button>
       ))}
     </div>
   );
