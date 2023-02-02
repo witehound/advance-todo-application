@@ -21,7 +21,6 @@ const TodoItem = ({
   onDonClicked,
 }: TodoItemProps) => {
   const { setTodoState, todoState } = useContext(TodoContext);
-  console.log();
   const handleDeleteTodo = async () => {
     await todoService.deleteTodo(todo.id);
     loadTodos();
