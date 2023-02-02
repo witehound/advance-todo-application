@@ -1,12 +1,3 @@
-.edit {
-  position: absolute;
-  background-color: white;
-  width: 400px;
-  height: 100vh;
-  top: 0;
-  right: 0;
-  padding: 10px;
-}
 .buttons {
   display: flex;
   align-items: center;

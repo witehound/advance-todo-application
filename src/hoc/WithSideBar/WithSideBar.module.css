@@ -1,0 +1,9 @@
+.edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background-color: white;
+  padding: 15px;
+}

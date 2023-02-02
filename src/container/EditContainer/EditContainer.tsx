@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import {
   Textfield,
   TextAreaFeild,
@@ -8,11 +8,9 @@ import {
 } from "../../components";
 import styles from "./EditContainer.module.css";
 import { todoServices } from "../../service";
+import { TodoContext } from "../../App";
 
 type EditContainerProps = {
-  selectedTask: number;
-  onSaveClick: () => void;
-  onCloseClick: () => void;
   todoService: todoServices;
 };
 
@@ -23,74 +21,63 @@ type EditTodoState = {
   isDone: boolean;
 };
 
-const EditContainer = ({
-  selectedTask,
-  onSaveClick,
-  onCloseClick,
-  todoService,
-}: EditContainerProps) => {
+const EditContainer = ({ todoService }: EditContainerProps) => {
+  const { todoState, setTodoState } = useContext(TodoContext);
   const [todo, setTodo] = useState<EditTodoState>({
     description: "",
     handNotes: "",
     task: "",
     isDone: false,
   });
-  const onClickSaveButton = async () => {
-    await todoService.updateTodo(selectedTask, todo);
-    onSaveClick();
-  };
 
   const onClickCancelButton = () => {
-    onCloseClick();
+    setTodoState({ editTodo: -1 });
+  };
+
+  const onClickSaveButton = async () => {
+    await todoService.updateTodo(todoState.editTodo, todo);
+    onClickCancelButton();
   };
 
   const getTask = async () => {
-    const data = await todoService.getSingleTodo(selectedTask);
+    const data = await todoService.getSingleTodo(todoState.editTodo);
     setTodo(data);
   };
 
   const onFormChnaged = (key: string, value: string | boolean) => {
     setTodo((prev) => ({ ...prev, [key]: value }));
   };
+
   useEffect(() => {
     getTask();
-  }, [selectedTask]);
+  }, [todoState.editTodo]);
 
   return (
-    <div className={styles.edit}>
+    <div>
       <h2>Edit Todo</h2>
       <div>
         <Textfield
           name="task"
           value={todo.task}
-          onInput={useCallback((value) => onFormChnaged("task", value), [])}
+          onInput={(value) => onFormChnaged("task", value)}
           label="Task"
         />
         <Checkbox
           name="isDone"
           label="Is Done?"
           value={todo.isDone}
-          onInput={useCallback(
-            (value: boolean) => onFormChnaged("isDone", value),
-            []
-          )}
+          onInput={(value: boolean) => onFormChnaged("isDone", value)}
         />
         <TextAreaFeild
           value={todo.description}
           name="description"
-          onInput={useCallback(
-            (value) => onFormChnaged("description", value),
-            []
-          )}
+          onInput={(value) => onFormChnaged("description", value)}
         />
         <CanvasFeild
           value={todo.handNotes}
           label="Hand Notes"
           name="handNotes"
-          onInput={useCallback(
-            (value) => onFormChnaged("handNotes", value),
-            []
-          )}
+          onInput={(value) => onFormChnaged("handNotes", value)}
         />
       </div>
       <div className={styles.buttons}>
