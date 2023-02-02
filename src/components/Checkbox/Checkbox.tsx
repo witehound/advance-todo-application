@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./Checkbox.module.css";
 
 type CheckBoxProps = {
@@ -7,7 +8,7 @@ type CheckBoxProps = {
   onInput?: (value: boolean) => void;
 };
 
-const CheckBox = ({ name, label, value, onInput }: CheckBoxProps) => {
+const CheckBox = memo(({ name, label, value, onInput }: CheckBoxProps) => {
   return (
     <div className={styles.container}>
       {label ? <label htmlFor={name}>{label}</label> : null}
@@ -20,6 +21,6 @@ const CheckBox = ({ name, label, value, onInput }: CheckBoxProps) => {
       />
     </div>
   );
-};
+});
 
 export default CheckBox;

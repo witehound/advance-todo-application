@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "../Button/Button.module.css";
 import stylesTwo from "./ButtonSelect.module.css";
 
@@ -10,8 +11,7 @@ type ButtonSelectProps = {
   options: ButtonSelectOption[];
   onInput: (value: string) => void;
 };
-const ButtonSelect = ({ value, options, onInput }: ButtonSelectProps) => {
-  console.log(typeof value);
+const ButtonSelect = memo(({ value, options, onInput }: ButtonSelectProps) => {
   return (
     <div className={stylesTwo.div}>
       {options.map((option, i) => (
@@ -27,6 +27,6 @@ const ButtonSelect = ({ value, options, onInput }: ButtonSelectProps) => {
       ))}
     </div>
   );
-};
+});
 
 export default ButtonSelect;

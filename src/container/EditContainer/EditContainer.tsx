@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Textfield,
   TextAreaFeild,
@@ -63,25 +63,34 @@ const EditContainer = ({
         <Textfield
           name="task"
           value={todo.task}
-          onInput={(value) => onFormChnaged("task", value)}
+          onInput={useCallback((value) => onFormChnaged("task", value), [])}
           label="Task"
         />
         <Checkbox
           name="isDone"
           label="Is Done?"
           value={todo.isDone}
-          onInput={(value) => onFormChnaged("isDone", value)}
+          onInput={useCallback(
+            (value: boolean) => onFormChnaged("isDone", value),
+            []
+          )}
         />
         <TextAreaFeild
           value={todo.description}
           name="description"
-          onInput={(value) => onFormChnaged("description", value)}
+          onInput={useCallback(
+            (value) => onFormChnaged("description", value),
+            []
+          )}
         />
         <CanvasFeild
           value={todo.handNotes}
           label="Hand Notes"
           name="handNotes"
-          onInput={(value) => onFormChnaged("handNotes", value)}
+          onInput={useCallback(
+            (value) => onFormChnaged("handNotes", value),
+            []
+          )}
         />
       </div>
       <div className={styles.buttons}>
