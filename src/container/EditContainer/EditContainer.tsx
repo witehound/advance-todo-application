@@ -49,6 +49,9 @@ const EditContainer = ({
     setTodo(data);
   };
 
+  const onFormChnaged = (key: string, value: string | boolean) => {
+    setTodo((prev) => ({ ...prev, [key]: value }));
+  };
   useEffect(() => {
     getTask();
   }, [selectedTask]);
@@ -62,13 +65,20 @@ const EditContainer = ({
         <Textfield
           name="task"
           value={todo.task}
-          onInput={(value) => {
-            setTodo((prev) => ({ ...prev, task: value }));
-          }}
+          onInput={(value) => onFormChnaged("task", value)}
           label="Task"
         />
-        <Checkbox name="isDone" label="Is Done?" value={todo.isDone} />
-        <TextAreaFeild value={todo.description} name="description" />
+        <Checkbox
+          name="isDone"
+          label="Is Done?"
+          value={todo.isDone}
+          onInput={(value) => onFormChnaged("isDone", value)}
+        />
+        <TextAreaFeild
+          value={todo.description}
+          name="description"
+          onInput={(value) => onFormChnaged("description", value)}
+        />
         <CanvasFeild
           value={todo.handNotes}
           label="Hand Notes"

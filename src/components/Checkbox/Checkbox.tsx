@@ -2,11 +2,12 @@ import styles from "./Checkbox.module.css";
 
 type CheckBoxProps = {
   name: string;
-  value?: any;
+  value?: boolean;
   label?: string;
+  onInput: (value: boolean) => void;
 };
 
-const CheckBox = ({ name, label, value }: CheckBoxProps) => {
+const CheckBox = ({ name, label, value, onInput }: CheckBoxProps) => {
   return (
     <div className={styles.container}>
       {label ? <label htmlFor={name}>{label}</label> : null}
@@ -14,7 +15,8 @@ const CheckBox = ({ name, label, value }: CheckBoxProps) => {
         type="checkbox"
         name={name}
         className={styles.checkbox}
-        value={value}
+        checked={value}
+        onChange={(event) => onInput(event.target.checked)}
       />
     </div>
   );

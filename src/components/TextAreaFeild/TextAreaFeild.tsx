@@ -4,9 +4,10 @@ type TextAreaFeildProps = {
   value: string;
   name?: string;
   label?: string;
+  onInput: (value: string) => void;
 };
 
-const TextAreaFeild = ({ value, label, name }: TextAreaFeildProps) => {
+const TextAreaFeild = ({ value, label, name, onInput }: TextAreaFeildProps) => {
   return (
     <div>
       {label ? <label htmlFor={name}>{label}</label> : null}
@@ -14,6 +15,7 @@ const TextAreaFeild = ({ value, label, name }: TextAreaFeildProps) => {
         className={styles.textAreaField}
         defaultValue={value}
         name={name}
+        onChange={(e) => onInput(e.target.value)}
       />
       ;
     </div>
