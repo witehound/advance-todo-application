@@ -3,15 +3,16 @@ import { TodoContainer } from "./hoc";
 import "./styles/App.css";
 import EditContainer from "./container/EditContainer";
 import { TodoContextProvider } from "./hooks/useTodoState";
-import { StatsContainer, AboutContainer } from "./container";
+import { AboutContainer } from "./container";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import StatsContainer from "./container/StatsContainer";
 
 function App() {
   return (
     <>
-      <Header />
       <BrowserRouter>
         <TodoContextProvider>
+          <Header />
           <Routes>
             <Route
               path="/"

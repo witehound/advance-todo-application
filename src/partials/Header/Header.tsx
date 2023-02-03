@@ -7,7 +7,7 @@ const Header = () => {
       <h1>Just doIt App</h1>
       <nav className={styles.nav}>
         <Headerlink text="Home" url="/" />
-        <Headerlink text="Stats" url="/stats" />
+        <Headerlink text="Stats" url="/stat" />
         <Headerlink text="About" url="/about" />
       </nav>
     </header>

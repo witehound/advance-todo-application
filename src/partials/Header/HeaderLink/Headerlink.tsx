@@ -1,14 +1,15 @@
 import styles from "./HeaderLink.module.css";
+import { Link } from "react-router-dom";
 type HeaderlinkProps = {
-  url?: string;
+  url?: any;
   text: string;
 };
 
 const Headerlink = ({ text, url }: HeaderlinkProps) => {
   return (
-    <a href={url} className={styles.a}>
+    <Link to={url} className={styles.a}>
       {text}
-    </a>
+    </Link>
   );
 };
 
