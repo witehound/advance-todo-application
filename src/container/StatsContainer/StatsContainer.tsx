@@ -26,9 +26,9 @@ const StatsContainer = ({ todoService }: StatsContainerProps) => {
       <h2 className={styles.h2}>Stats</h2>
       <div className={styles.stats}>
         <div>
-          <div>Active To do : ({doneTodos.length})</div>
+          <div>Active To do : ({activeTodos.length})</div>
           <ul className={styles.ul}>
-            {doneTodos.map((todo, i) => (
+            {activeTodos.map((todo, i) => (
               <li key={i} className={styles.li}>
                 {todo.task}
               </li>
@@ -36,9 +36,9 @@ const StatsContainer = ({ todoService }: StatsContainerProps) => {
           </ul>
         </div>
         <div>
-          <div>Done To Do : ({activeTodos.length})</div>
+          <div>Done To Do : ({doneTodos.length})</div>
           <ul className={styles.ul}>
-            {activeTodos.map((todo, i) => (
+            {doneTodos.map((todo, i) => (
               <li key={i} className={styles.li}>
                 {todo.task}
               </li>
