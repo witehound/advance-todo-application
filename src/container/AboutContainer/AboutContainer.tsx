@@ -19,6 +19,6 @@ const AboutContainer = () => {
       </div>
     </div>
   );
-};
+}; //
 
 export default AboutContainer;
